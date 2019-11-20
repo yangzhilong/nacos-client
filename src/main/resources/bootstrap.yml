@@ -7,17 +7,28 @@ management:
             base-path: /
             exposure:
                 include: '*'
+nacos:
+    server-addr: 127.0.0.1:8848
+
+sentinel:    nocas:        data-id: nacos-client-sentinel
+        group-id: DEFAULT_GROUP
+        server-addr: ${nacos.server-addr} 
+
 spring:
     application:
         name:   nacos-client
     cloud:
+        sentinel:
+            transport:
+                dashboard: 'localhost:8080'
         nacos:
             discovery:                enabled: true
-                server-addr: 127.0.0.1:8848
+                server-addr: ${nacos.server-addr}
                 namespace: c490ac8b-9377-4b9e-beba-8a450e8fe0ac
+                access-key: 
             config:
                 enabled: true
-                server-addr: 127.0.0.1:8848
+                server-addr: ${nacos.server-addr}
                 namespace: c490ac8b-9377-4b9e-beba-8a450e8fe0ac
                 file-extension: properties
                 group: TEST_GROUP

@@ -14,10 +14,26 @@ content:
 ```
 
 dataId:nacos-client.properties
-goup:test_GROUP
+goup:TEST_GROUP
 format:properties
 content:
     config.name=wangwu
     config.age=40
+
+```
+
+```
+
+dataId:nacos-client-sentinel
+goup:DEFAULT_GROUP
+format:JSON
+content:
+    [{
+        "resource": "test",
+        "count": 2,
+        "grade": 1,
+        "strategy": 0,
+        "controlBehavior": 0
+    }]
 
 ```
