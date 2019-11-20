@@ -1,0 +1,27 @@
+server:
+    port:   10011
+
+management:
+    endpoints:
+        web:
+            base-path: /
+            exposure:
+                include: '*'
+spring:
+    application:
+        name:   nacos-client
+    cloud:
+        nacos:
+            config:
+                enabled: true
+                server-addr: 127.0.0.1:8848
+                namespace: c490ac8b-9377-4b9e-beba-8a450e8fe0ac
+                file-extension: properties
+                group: TEST_GROUP
+                ext-config:                - data-id: common.properties
+                  group: COMMON_GROUP
+                  refresh: true
+    jackson:
+        default-property-inclusion: NON_NULL
+    profiles:
+        active: local
