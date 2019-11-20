@@ -2,23 +2,24 @@
 ### 1、add a namespace， copy Namespace ID
 
 ### 2、add data configurations in namespace
+(```)
+dataId:common.properties
 
-* dataId:common.properties
+goup:COMMON_GROUP
 
-* goup:COMMON_GROUP
+format:properties
 
-* format:properties
-
-* content:
+content:
     common.name=lisi
+(```)
+(```)
+dataId:nacos-client.properties
 
+goup:test_GROUP
 
-* dataId:nacos-client.properties
+format:properties
 
-* goup:test_GROUP
-
-* format:properties
-
-* content:
+content:
     config.name=wangwu
     config.age=40
+(```)
