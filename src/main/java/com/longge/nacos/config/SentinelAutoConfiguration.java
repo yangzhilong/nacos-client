@@ -41,8 +41,8 @@ public class SentinelAutoConfiguration {
         
         Properties properties = new Properties();
         properties.put(PropertyKeyConst.SERVER_ADDR, config.getServerAddr());
-        if(StringUtils.isNotBlank(config.getNamespaceId())) {
-            properties.put(PropertyKeyConst.NAMESPACE, config.getNamespaceId());
+        if(StringUtils.isNotBlank(config.getNamespace())) {
+            properties.put(PropertyKeyConst.NAMESPACE, config.getNamespace());
         }
         
         ReadableDataSource<String, List<FlowRule>> flowRuleDataSource = new NacosDataSource<>(properties, config.getGroupId(), config.getDataId(), parser);
@@ -66,7 +66,7 @@ public class SentinelAutoConfiguration {
         @NotBlank
         private String dataId;
         
-        private String namespaceId;
+        private String namespace;
     }
     
     static class SentinelBootstrap {} 
