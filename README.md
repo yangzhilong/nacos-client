@@ -40,5 +40,9 @@ you can see result:
 ```
 If you have concurrent access or very fast continuous access, you see the following results:
 ```
+{"error":"too busy"}
+```
+If have exception, you see the following results:
+```
 {"pro":"fallback","dto":"fallback"}
 ```

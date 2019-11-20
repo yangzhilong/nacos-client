@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.longge.nacos.dto.ConfigDto;
+import com.longge.nacos.handler.TestHandler;
 
 /**
  * @author roger yang
@@ -28,7 +29,7 @@ public class TestRest {
     private ConfigDto configDto;
     
     @GetMapping("/get")
-    @SentinelResource(value = "test", blockHandler = "fallbackGet", fallback = "fallbackGet")
+    @SentinelResource(value = "test", blockHandlerClass = TestHandler.class, blockHandler = "blockGet", fallbackClass = TestHandler.class ,fallback = "fallbackGet")
     public Map<String, String> get() {
         Map<String, String> result = new HashMap<>();
         result.put("dto", configDto.getName());
@@ -38,13 +39,10 @@ public class TestRest {
         } catch (InterruptedException e) {
              e.printStackTrace();
         }
-        return result;
-    }
-    
-    public Map<String, String> fallbackGet() {
-        Map<String, String> result = new HashMap<>();
-        result.put("dto", "fallback");
-        result.put("pro", "fallback");
+        int val = RandomUtils.nextInt(1, 2);
+        if(2 == val) {
+            throw new RuntimeException("val is 2");
+        }
         return result;
     }
 }
